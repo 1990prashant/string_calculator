@@ -3,10 +3,15 @@ class StringCalculator
     validate_input(input)
     numbers = input.split(/[^0-9-]+/).map(&:to_i)
     validate_for_negative_numbers(numbers)
+    ignore_large_numbers(numbers)
     numbers.sum
   end
 
   private
+
+  def ignore_large_numbers(numbers)
+    numbers.reject! { |num| num > 1000 }
+  end
 
   def validate_for_negative_numbers(numbers)
     negative_numbers = numbers.select(&:negative?)
