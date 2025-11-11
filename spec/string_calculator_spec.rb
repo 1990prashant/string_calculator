@@ -53,5 +53,17 @@ describe StringCalculator do
         expect { calculator.add('3;-5;3;-9') }.to raise_error('Negative numbers not allowed <-5, -9>')
       end
     end
+
+    context 'with delimeter of n lengths' do
+      it 'should return sum of numbers' do
+        expect(calculator.add('//[***]\n3***5***3')).to eq(11)
+      end
+    end
+
+    context 'with number greater 1000' do
+      it 'should return sum of numbers less than equal to 1000' do
+        expect(calculator.add('3;5;3;1001;2000')).to eq(11)
+      end
+    end
   end
 end
